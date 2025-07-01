@@ -935,4 +935,389 @@ function initParallax() {
 }
 
 // 初始化视差效果
-document.addEventListener('DOMContentLoaded', initParallax); 
+document.addEventListener('DOMContentLoaded', initParallax);
+
+// 彩虹文字动画效果
+function initRainbowText() {
+    const rainbowElements = document.querySelectorAll('.hero-title, .page-header h1, .section-header h2');
+    
+    rainbowElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            this.style.animation = 'rainbow 2s ease-in-out infinite';
+        });
+        
+        element.addEventListener('mouseleave', function() {
+            this.style.animation = 'gradientShift 3s ease-in-out infinite';
+        });
+    });
+}
+
+// 彩色粒子背景效果
+function initColorfulParticles() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    // 创建粒子容器
+    const particlesContainer = document.createElement('div');
+    particlesContainer.className = 'colorful-particles';
+    particlesContainer.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 1;
+    `;
+    
+    hero.appendChild(particlesContainer);
+    
+    // 创建彩色粒子
+    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
+    
+    for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+            position: absolute;
+            width: ${Math.random() * 6 + 2}px;
+            height: ${Math.random() * 6 + 2}px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            border-radius: 50%;
+            opacity: ${Math.random() * 0.6 + 0.2};
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation: floatParticle ${Math.random() * 10 + 10}s linear infinite;
+            animation-delay: ${Math.random() * 5}s;
+        `;
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// 动态渐变背景
+function initDynamicGradient() {
+    const gradientElements = document.querySelectorAll('.hero, .page-header, .featured-works, .skills, .portfolio-filter, .portfolio-grid, .contact-form-section');
+    
+    gradientElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            const colors = [
+                'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)',
+                'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+                'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+                'linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)',
+                'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+            ];
+            
+            const randomGradient = colors[Math.floor(Math.random() * colors.length)];
+            this.style.background = randomGradient;
+            this.style.transition = 'background 0.5s ease-in-out';
+        });
+        
+        element.addEventListener('mouseleave', function() {
+            // 恢复原始渐变
+            setTimeout(() => {
+                this.style.background = '';
+                this.style.transition = '';
+            }, 500);
+        });
+    });
+}
+
+// 彩色按钮悬停效果
+function initColorfulButtons() {
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .filter-btn, .submit-btn');
+    
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            this.style.background = `linear-gradient(45deg, ${randomColor}, ${colors[Math.floor(Math.random() * colors.length)]})`;
+            this.style.transform = 'translateY(-3px) scale(1.05)';
+            this.style.boxShadow = `0 8px 25px ${randomColor}40`;
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            setTimeout(() => {
+                this.style.background = '';
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            }, 300);
+        });
+    });
+}
+
+// 彩色卡片悬停效果
+function initColorfulCards() {
+    const cards = document.querySelectorAll('.work-item, .skill-category, .philosophy-item, .contact-item, .portfolio-item');
+    
+    cards.forEach((card, index) => {
+        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
+        const color = colors[index % colors.length];
+        
+        card.addEventListener('mouseenter', function() {
+            this.style.borderTopColor = color;
+            this.style.boxShadow = `0 20px 40px ${color}30`;
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.borderTopColor = '';
+            this.style.boxShadow = '';
+            this.style.transform = '';
+        });
+    });
+}
+
+// 彩色导航栏效果
+function initColorfulNavbar() {
+    const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelectorAll('.nav-menu li a');
+    
+    navLinks.forEach((link, index) => {
+        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57'];
+        const color = colors[index % colors.length];
+        
+        link.addEventListener('mouseenter', function() {
+            this.style.background = `linear-gradient(45deg, ${color}, ${colors[(index + 1) % colors.length]})`;
+            this.style.color = '#fff';
+            this.style.transform = 'translateY(-2px) scale(1.1)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.background = '';
+            this.style.color = '';
+            this.style.transform = '';
+        });
+    });
+}
+
+// 彩色时间线效果
+function initColorfulTimeline() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    timelineItems.forEach((item, index) => {
+        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4'];
+        const color = colors[index % colors.length];
+        
+        const dateElement = item.querySelector('.timeline-date');
+        if (dateElement) {
+            dateElement.addEventListener('mouseenter', function() {
+                this.style.background = `linear-gradient(45deg, ${color}, ${colors[(index + 1) % colors.length]})`;
+                this.style.transform = 'scale(1.1) rotate(5deg)';
+            });
+            
+            dateElement.addEventListener('mouseleave', function() {
+                this.style.background = '';
+                this.style.transform = '';
+            });
+        }
+    });
+}
+
+// 彩色表单效果
+function initColorfulForm() {
+    const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
+    
+    formInputs.forEach((input, index) => {
+        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4'];
+        const color = colors[index % colors.length];
+        
+        input.addEventListener('focus', function() {
+            this.style.borderColor = color;
+            this.style.boxShadow = `0 0 0 3px ${color}20`;
+            this.style.transform = 'scale(1.02)';
+        });
+        
+        input.addEventListener('blur', function() {
+            this.style.borderColor = '';
+            this.style.boxShadow = '';
+            this.style.transform = '';
+        });
+    });
+}
+
+// 彩色滚动条效果
+function initColorfulScrollbar() {
+    const style = document.createElement('style');
+    style.textContent = `
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: linear-gradient(180deg, #f1f1f1, #e1e1e1);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            border-radius: 10px;
+            border: 2px solid #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// 彩色选择效果
+function initColorfulSelection() {
+    const style = document.createElement('style');
+    style.textContent = `
+        ::selection {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+        }
+        
+        ::-moz-selection {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// 彩色加载动画
+function initColorfulLoading() {
+    const loadingSpinner = document.createElement('div');
+    loadingSpinner.className = 'colorful-loading';
+    loadingSpinner.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #ff6b6b;
+        border-right: 4px solid #4ecdc4;
+        border-bottom: 4px solid #45b7d1;
+        border-left: 4px solid #96ceb4;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 10000;
+        display: none;
+    `;
+    
+    document.body.appendChild(loadingSpinner);
+    
+    // 显示加载动画
+    window.showColorfulLoading = function() {
+        loadingSpinner.style.display = 'block';
+    };
+    
+    // 隐藏加载动画
+    window.hideColorfulLoading = function() {
+        loadingSpinner.style.display = 'none';
+    };
+}
+
+// 彩色通知效果
+function showColorfulNotification(message, type = 'info') {
+    const colors = {
+        success: '#4ecdc4',
+        error: '#ff6b6b',
+        warning: '#feca57',
+        info: '#45b7d1'
+    };
+    
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(45deg, ${colors[type]}, ${colors[type]}dd);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px ${colors[type]}40;
+        z-index: 10000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        max-width: 300px;
+        word-wrap: break-word;
+    `;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // 显示通知
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // 自动隐藏
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+
+// 初始化所有彩色效果
+function initAllColorfulEffects() {
+    initRainbowText();
+    initColorfulParticles();
+    initDynamicGradient();
+    initColorfulButtons();
+    initColorfulCards();
+    initColorfulNavbar();
+    initColorfulTimeline();
+    initColorfulForm();
+    initColorfulScrollbar();
+    initColorfulSelection();
+    initColorfulLoading();
+    
+    // 添加CSS动画
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes rainbow {
+            0%, 100% { filter: hue-rotate(0deg); }
+            25% { filter: hue-rotate(90deg); }
+            50% { filter: hue-rotate(180deg); }
+            75% { filter: hue-rotate(270deg); }
+        }
+        
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// 页面加载完成后初始化彩色效果
+document.addEventListener('DOMContentLoaded', function() {
+    // 延迟初始化彩色效果，确保页面完全加载
+    setTimeout(() => {
+        initAllColorfulEffects();
+    }, 1000);
+});
+
+// 导出函数供其他模块使用
+window.ColorfulEffects = {
+    showNotification: showColorfulNotification,
+    showLoading: window.showColorfulLoading,
+    hideLoading: window.hideColorfulLoading
+}; 
