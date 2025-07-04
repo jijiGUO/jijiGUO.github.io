@@ -3,143 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>设计师个人作品集</title>
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>上海故事地图</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">DESIGNER</a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">首页</a></li>
-                <li><a href="pages/about.html">关于</a></li>
-                <li><a href="pages/portfolio.html">作品</a></li>
-                <li><a href="pages/contact.html">联系</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="container">
+        <!-- 头部标题 -->
+        <header class="header">
+            <h1 class="title">上海故事地图</h1>
+            <p class="subtitle">探索魔都的精彩故事</p>
+        </header>
 
-    <!-- 主要内容区域 -->
-    <main class="main-content">
-        <!-- 首页横幅 -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title animate-fade-in-up">设计师个人作品集</h1>
-                <p class="hero-subtitle animate-fade-in-up delay-200">专注于用户体验与视觉设计</p>
-                <p class="hero-description animate-fade-in-up delay-400">通过创新的设计思维和精湛的技术实现，为用户创造卓越的数字体验</p>
-                <div class="hero-actions animate-fade-in-up delay-600">
-                    <a href="pages/portfolio.html" class="btn-primary">查看作品</a>
-                    <a href="pages/contact.html" class="btn-secondary">联系我</a>
+        <!-- 主要内容区域 -->
+        <main class="main-content">
+            <!-- 故事选择页面 -->
+            <div id="story-selection" class="story-selection">
+                <div class="stories-grid" id="stories-grid">
+                    <!-- 故事卡片将通过JavaScript动态生成 -->
                 </div>
             </div>
-        </section>
 
-        <!-- 精选作品 -->
-        <section class="featured-works">
-            <div class="section-header">
-                <h2 class="animate-fade-in-up">精选作品</h2>
-                <p class="animate-fade-in-up delay-200">展示最新的设计项目和创意成果</p>
-            </div>
-            <div class="works-grid">
-                <article class="work-item animate-scale-in delay-300">
-                    <div class="work-image">
-                        <img src="assets/img/work1.png" alt="项目一">
-                    </div>
-                    <div class="work-info">
-                        <h3>项目名称一</h3>
-                        <p>UI设计 / 用户体验</p>
-                        <a href="pages/portfolio.html" class="work-link">查看详情</a>
-                    </div>
-                </article>
-                <article class="work-item animate-scale-in delay-400">
-                    <div class="work-image">
-                        <img src="assets/img/work2.png" alt="项目二">
-                    </div>
-                    <div class="work-info">
-                        <h3>项目名称二</h3>
-                        <p>品牌设计 / 视觉识别</p>
-                        <a href="pages/portfolio.html" class="work-link">查看详情</a>
-                    </div>
-                </article>
-                <article class="work-item animate-scale-in delay-500">
-                    <div class="work-image">
-                        <img src="assets/img/work3.png" alt="项目三">
-                    </div>
-                    <div class="work-info">
-                        <h3>项目名称三</h3>
-                        <p>移动应用 / 界面设计</p>
-                        <a href="pages/portfolio.html" class="work-link">查看详情</a>
-                    </div>
-                </article>
-                <article class="work-item animate-scale-in delay-600">
-                    <div class="work-image">
-                        <img src="assets/img/work4.png" alt="项目四">
-                    </div>
-                    <div class="work-info">
-                        <h3>项目名称四</h3>
-                        <p>网站设计 / 前端开发</p>
-                        <a href="pages/portfolio.html" class="work-link">查看详情</a>
-                    </div>
-                </article>
-            </div>
-        </section>
+            <!-- 故事阅读页面 -->
+            <div id="story-reading" class="story-reading" style="display: none;">
+                <div class="story-header">
+                    <button class="back-btn" onclick="showStorySelection()">← 返回故事列表</button>
+                    <h2 id="story-title" class="story-title"></h2>
+                </div>
+                
+                <div class="story-content" id="story-content">
+                    <!-- 故事内容将通过JavaScript动态生成 -->
+                </div>
 
-        <!-- 技能展示 -->
-        <section class="skills">
-            <div class="section-header">
-                <h2 class="animate-fade-in-up">专业技能</h2>
-                <p class="animate-fade-in-up delay-200">多领域设计技能与工具掌握</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category animate-fade-in-left delay-300">
-                    <h3>设计工具</h3>
-                    <ul>
-                        <li>Adobe Creative Suite</li>
-                        <li>Figma / Sketch</li>
-                        <li>InVision / ProtoPie</li>
-                        <li>Principle / Framer</li>
-                    </ul>
-                </div>
-                <div class="skill-category animate-fade-in-up delay-400">
-                    <h3>设计领域</h3>
-                    <ul>
-                        <li>用户界面设计 (UI)</li>
-                        <li>用户体验设计 (UX)</li>
-                        <li>品牌视觉设计</li>
-                        <li>移动应用设计</li>
-                    </ul>
-                </div>
-                <div class="skill-category animate-fade-in-right delay-500">
-                    <h3>技术技能</h3>
-                    <ul>
-                        <li>HTML / CSS / JavaScript</li>
-                        <li>React / Vue.js</li>
-                        <li>响应式设计</li>
-                        <li>设计系统构建</li>
-                    </ul>
+                <div class="story-choices" id="story-choices">
+                    <!-- 选择按钮将通过JavaScript动态生成 -->
                 </div>
             </div>
-        </section>
-    </main>
 
-    <!-- 页脚 -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-info">
-                <p>&copy; 2024 设计师姓名. 保留所有权利.</p>
-            </div>
-            <div class="footer-links">
-                <a href="pages/about.html">关于</a>
-                <a href="pages/portfolio.html">作品</a>
-                <a href="pages/contact.html">联系</a>
-            </div>
-        </div>
-    </footer>
+            <!-- 结果页面 -->
+            <div id="result-page" class="result-page" style="display: none;">
+                <div class="result-header">
+                    <button class="back-btn" onclick="showStorySelection()">← 返回故事列表</button>
+                    <h3 class="result-title">选择结果</h3>
+                </div>
+                
+                <div class="result-content" id="result-content">
+                    <!-- 结果内容将通过JavaScript动态生成 -->
+                </div>
 
-    <script src="assets/js/main.js"></script>
+                <div class="result-actions">
+                    <button class="primary-btn" onclick="showStorySelection()">继续探索</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 锚点状态显示 -->
+        <footer class="footer">
+            <div class="anchors-status">
+                <h4>已获得锚点：</h4>
+                <div id="anchors-display" class="anchors-list">
+                    <!-- 锚点状态将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 脚本引用 -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
 </body>
 </html> 
